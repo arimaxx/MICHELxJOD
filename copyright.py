@@ -1,27 +1,16 @@
 from pyrogram import Client, filters
-from pyrogram import enums
-from pyrogram.enums import ChatType
-import os, re, subprocess, sys, traceback
-from inspect import getfullargspec
-from io import StringIO
-from time import time
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 import asyncio
-import random 
+import random
 import os
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
-from pyrogram import filters
-from pyrogram.types import Message
-import time
-import psutil
-import platform
-
 
 # -------------------------------------------------------------------------------------
 
-BOT_USERNAME = os.environ.get("BOT_USERNAME","ll_ts_security_ll_bot")
+BOT_USERNAME = os.environ.get("BOT_USERNAME", "ll_ts_security_ll_bot")
 SUDO_USERS = list(map(int, os.environ.get("SUDO_USERS", "5957398316 6352061770").split()))
 OWNER_ID = "6352061770"
 LOG_ID = int(os.environ.get("LOGGER_ID", "-1001916618183"))
+
 # -------------------------------------------------------------------------------------
 
 API_ID = "25450075"
@@ -32,37 +21,13 @@ BOT_TOKEN = os.environ.get("BOT_TOKEN", None)
 
 SUPPORT_GROUP_USERNAME = "three_stars_ki_duniya"
 SOURCE_CODE_CHANNEL_USERNAME = "ll_about_ari_ll"
+
 # --------------------------------------------------------------------------------------
 
 app = Client('my_bot', api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
 
 # ----------------------------------------------------------------------------------------
 
-STICKER = [
-    "CAACAgEAAxkBAAMnZZ1kVlWO8ghxbU57PwHBY2Wa57oAAswBAAJB87hHUkWvBVh2glweBA",
-    "CAACAgEAAxkBAAMnZZ1kVlWO8ghxbU57PwHBY2Wa57oAAswBAAJB87hHUkWvBVh2glweBA",
-    "CAACAgEAAxkBAAMnZZ1kVlWO8ghxbU57PwHBY2Wa57oAAswBAAJB87hHUkWvBVh2glweBA",
-]
-
-
-EMOJIOS = [
-    "✨",
-    "💘",
-    "🪄",
-    "💋",
-    "🙏",
-    "😘",
-    "🥰",
-    "💖",
-    "🧪",
-    "💞",
-]
-
-
-# ------------------------------------------------------------------------------------------
-
-SUPPORT_GROUP_USERNAME = "three_stars_ki_duniya"
-SOURCE_CODE_CHANNEL_USERNAME = "ll_about_ari_ll"
 VIDEO_URLS = [
     "https://telegra.ph/file/1722b8e21ef54ef4fbc23.mp4",
     "https://telegra.ph/file/ac7186fffc5ac5f764fc1.mp4",
@@ -71,25 +36,24 @@ VIDEO_URLS = [
     "https://telegra.ph/file/03ac4a6e94b5b4401fa5a.mp4",
 ]
 
-
 # -------------------------------------------------------------------------------------
 
 @app.on_message(filters.private & filters.command("start"))
-async def start_private_chat(client: Client, message):
+async def start_private_chat(client, message):
     # Choose a random video URL
     video_url = random.choice(VIDEO_URLS)
 
-   keyboard = InlineKeyboardMarkup(
-    [
+    keyboard = InlineKeyboardMarkup(
         [
-            InlineKeyboardButton("❤️‍🔥ᴀᴅᴅ ᴍᴇ❤️‍🔥", url="t.me/YourBotUsername?startgroup=true"),
-            InlineKeyboardButton("💫ꜱᴜᴘᴘᴏʀᴛ💫", url=f"t.me/{SUPPORT_GROUP_USERNAME}"),
-        ],
-        [
-            InlineKeyboardButton("💖ꜱᴏᴜʀᴄᴇ💖", url=f"t.me/{SOURCE_CODE_CHANNEL_USERNAME}"),
+            [
+                InlineKeyboardButton("❤️‍🔥ᴀᴅᴅ ᴍᴇ❤️‍🔥", url=f"t.me/{BOT_USERNAME}?startgroup=true"),
+                InlineKeyboardButton("💫ꜱᴜᴘᴘᴏʀᴛ💫", url=f"t.me/{SUPPORT_GROUP_USERNAME}"),
+            ],
+            [
+                InlineKeyboardButton("💖ꜱᴏᴜʀᴄᴇ💖", url=f"t.me/{SOURCE_CODE_CHANNEL_USERNAME}"),
+            ]
         ]
-    ]
-)
+    )
 
     await client.send_video(
         chat_id=message.chat.id,
@@ -115,35 +79,29 @@ async def start_private_chat(client: Client, message):
     await accha.delete()
 
 
-
 # -------------------------------------------------------------------------------------
-
+# -------------------------------------------------------------------------------------
 
 @app.on_message(filters.group & filters.text & ~filters.me)
 async def delete_links_and_keywords(client, message):
     keywords = ["NCERT", "XII", "page", "Ans", "meiotic", "divisions", "System.in", "Scanner", "void", "nextInt"]
-    
+
     if any(keyword.lower() in message.text.lower() for keyword in keywords) or any(link in message.text.lower() for link in ["http", "https", "www."]):
         await message.delete()
-        
+
 # -------------------------------------------------------------------------------------
-# -------------------------------------------------------------------------------------
+
 @app.on_edited_message(filters.group & ~filters.me)
 async def delete_edited_messages(client, edited_message):
     await edited_message.delete()
 
-
-
-# ----------------------------------------------------------------------------------------------------
-# ------------------------------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------------
+# -------------------------------------------------------------------------------------
 
 @app.on_message(filters.group & filters.text & ~filters.me)
 async def delete_long_messages(client, message):
     if len(message.text.split()) >= 10:
         await message.delete()
-
-# -----------------------------------------------------------------------------------
-
 
 # -----------------------------------------------------------------------------------
 # -----------------------------------------------------------------------------------
