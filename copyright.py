@@ -80,16 +80,17 @@ async def start_private_chat(client: Client, message):
     video_url = random.choice(VIDEO_URLS)
 
    keyboard = InlineKeyboardMarkup(
+    [
         [
-            [
-                InlineKeyboardButton("❤️‍🔥ᴀᴅᴅ ᴍᴇ❤️‍🔥", url="t.me/YourBotUsername?startgroup=true"),
-                InlineKeyboardButton("💫ꜱᴜᴘᴘᴏʀᴛ💫", url=f"t.me/{SUPPORT_GROUP_USERNAME}"),
-            ],
-            [
-                InlineKeyboardButton("💖ꜱᴏᴜʀᴄᴇ💖", url=f"t.me/{SOURCE_CODE_CHANNEL_USERNAME}"),
-            ]
+            InlineKeyboardButton("❤️‍🔥ᴀᴅᴅ ᴍᴇ❤️‍🔥", url="t.me/YourBotUsername?startgroup=true"),
+            InlineKeyboardButton("💫ꜱᴜᴘᴘᴏʀᴛ💫", url=f"t.me/{SUPPORT_GROUP_USERNAME}"),
+        ],
+        [
+            InlineKeyboardButton("💖ꜱᴏᴜʀᴄᴇ💖", url=f"t.me/{SOURCE_CODE_CHANNEL_USERNAME}"),
         ]
-    )
+    ]
+)
+
     await client.send_video(
         chat_id=message.chat.id,
         video=video_url,
