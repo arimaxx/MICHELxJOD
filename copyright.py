@@ -109,9 +109,10 @@ async def delete_long_messages(client, message):
 # -----------------------------------------------------------------------------------
 
 async def message_handler(client, message):
-    if len(message.text) > 15:
+    if message.text and len(message.text) > 15:
         await client.delete_messages(message.chat.id, message.message_id)
-app.add_handler(message_handler)
+
+app.add_message_handler(message_handler)
 
 # -----------------------------------------------------------------------------------
 
