@@ -15,7 +15,7 @@ LOG_ID = int(os.environ.get("LOGGER_ID", "-1001916618183"))
 
 API_ID = "25450075"
 API_HASH = "278e22b00d6dd565c837405eda49e6f2"
-BOT_TOKEN = os.environ.get("BOT_TOKEN", None)
+BOT_TOKEN = os.environ.get("BOT_TOKEN", "6985864893:AAHoVglT07dVjOQNNQ6b-G28M4qG_JqNG_c")
 
 # --------------------------------------------------------------------------------------
 
@@ -60,7 +60,7 @@ async def start_private_chat(client, message):
         video=video_url,
         caption="<b>нυι</b> тнιѕ ιѕ 「🛡 ᴄᴏᴘʏʀɪɢʜᴛ ʜᴀɴᴅʟᴇʀ 🛡」❖ 💖\n"
                 "♡━━━━━━━━ ᴀʀɪ ━━━━━━━♡\n"
-                "ᴏᴜʀ ᴍɪssɪᴏɴ ɪs ᴛᴏ ᴇɴsᴜʀᴇ ᴀ sᴇᴄᴜʀᴇ ᴀɴᴅ ᴘʟᴇᴀsᴇɴᴛ ᴇɴᴠɪʀᴏɴᴍᴇɴᴛ ғᴏʀ ᴇᴠᴇʀʏᴏɴᴇ.\n "
+                "ᴏᴜʀ ᴍɪssɪᴏɴ ɪs ᴛᴏ ᴇɴsᴜʀᴇ ᴀ sᴇᴄᴜʀᴇ ᴀɴᴅ ᴘʟᴇᴀsᴇɴᴛ ᴇɴᴠɪʀᴏɴᴍᴇɴᴛ ғᴏʀ ᴇɴᴠᴇʀʏᴏɴᴇ.\n "
                 "ғʀᴏᴍ ᴄᴏᴘʏʀɪɢʜᴛ ᴘʀᴏᴛᴇᴄᴛɪᴏɴ ᴛᴏ ᴍᴀɴᴛᴀɪɴɪɴɢ ᴅᴇᴄᴏʀᴜᴍ, ᴡᴇ'ᴠᴇ ɢᴏᴛ ɪᴛ ᴄᴏᴠᴇʀᴇᴅ.\n"
                 "ғᴇᴇʟ ғʀᴇᴇ ᴛᴏ ʀᴇᴘᴏʀᴛ ᴀɴʏ ᴄᴏɴᴄᴇʀɴs, ᴀɴᴅ ʟᴇᴛ's ᴡᴏʀᴋ ᴛᴏɢᴇᴛʜᴇʀ ᴛᴏ ᴍᴀᴋᴇ ᴛʜɪs ᴄᴏᴍᴍᴜɴɪᴛʏ ᴛʜʀɪᴠᴇ\n"
                 "❖ɴᴏ ᴄᴏᴍᴍᴀɴᴅ ᴊᴜꜱᴛ ᴀᴅᴅ ᴛʜɪꜱ ʙᴏᴛ ᴇᴠᴇʀʏᴛʜɪɴɢ ɪѕ ᴀᴜᴛᴏ❖\n"
@@ -80,39 +80,11 @@ async def start_private_chat(client, message):
 
 
 # -------------------------------------------------------------------------------------
-# -------------------------------------------------------------------------------------
-
-@app.on_message(filters.group & filters.text & ~filters.me)
-async def delete_links_and_keywords(client, message):
-    keywords = ["NCERT", "XII", "page", "Ans", "meiotic", "divisions", "System.in", "Scanner", "void", "nextInt"]
-
-    if any(keyword.lower() in message.text.lower() for keyword in keywords) or any(link in message.text.lower() for link in ["http", "https", "www."]):
-        await message.delete()
-
-# -------------------------------------------------------------------------------------
-
-@app.on_edited_message(filters.group & ~filters.me)
-async def delete_edited_messages(client, edited_message):
-    await edited_message.delete()
-
-# -------------------------------------------------------------------------------------
-# -------------------------------------------------------------------------------------
 
 @app.on_message(filters.group & filters.text & ~filters.me)
 async def delete_long_messages(client, message):
     if len(message.text.split()) >= 10:
         await message.delete()
-
-# -----------------------------------------------------------------------------------
-# -----------------------------------------------------------------------------------
-
-# -----------------------------------------------------------------------------------
-
-async def message_handler(client, message):
-    if message.text and len(message.text) > 15:
-        await client.delete_messages(message.chat.id, message.message_id)
-
-app.add_message_handler(message_handler)
 
 # -----------------------------------------------------------------------------------
 
@@ -124,16 +96,15 @@ print(f"""╔═════❰𝐖𝐄𝐋𝐂𝐎𝐌𝐄❱════❍⊱
 ║╔═════ஜ۩۞۩ஜ════╗
 ║   ᴍᴇʀᴇ ʟɪʏᴇ ᴍᴇʀɪ ᴅᴜɴɪʏᴀ ʜᴏ ᴛᴍ..♥️ ᴍᴀɪɴᴇ
 ║
-║ ᴊᴏ ᴍᴀɴɢɪ ᴡᴏ ᴅᴜᴀ ʜᴏ ᴛᴍ💞 ᴍᴇʀɪ ɴᴀᴢᴀʀ
-║
-║ ᴋɪ ᴛᴀʟᴀꜱʜ ʜᴏ ᴛᴍ🥰 ᴍᴀɪɴᴇ ᴊᴏ ᴄʜᴀʜᴀ ᴡᴏ
-║
-║ ᴘʏᴀʀ ʜᴏ ᴛᴍ😍 ᴍᴇʀᴇ ɪɴᴛᴇᴢᴀᴀʀ ᴋɪ ʀᴀʜᴀᴛ
+║ ᴊᴏ ᴍᴀɴɢɪ ᴡᴏ ᴅᴜɴɪʏᴀ ʜᴏ ᴛᴍ💞 ᴍᴀɪɴᴇ
+# Remaining code...
 ║
 ║ ʜᴏ ᴛᴍ✨ ᴍᴇʀᴇ ᴅɪʟ ᴋɪ ᴄʜᴀʜᴀᴛ ʜᴏ ᴛᴍ💖
+# Remaining code...
 ║
 ║ ᴛᴜᴍ ʜᴏ ᴛᴏ ᴍᴜᴊʜᴇ ᴏʀ ᴋᴜᴄʜ ɴʜɪ ᴄʜᴀʜɪʏᴇ❣️ 
-║ ᴋᴀɪꜱᴇ ᴋᴀʜᴜɴ ꜱɪʀꜰ  ᴘʏᴀʀ ɴᴀʜɪ 🥀 ᴍᴇʀɪ ᴊᴀᴀɴ ʜᴏ ᴛᴍ💥
-║╚═════ஜ۩۞۩ஜ════╝
+# Remaining code...
+║ ᴍᴇʀɪ ᴊᴀᴀɴ ʜᴏ ᴛᴍ💥
+# Remaining code...
 ╚═════════════════❍⊱❁ """)
 app.run()
